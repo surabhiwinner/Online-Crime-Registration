@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+    {% block section %}
+    
+      <main><div class="page-title accent-background">
+        <div class="container d-lg-flex justify-content-between align-items-center">
+          <h1 class="mb-2 mb-lg-0">Crime List </h1>
+          <nav class="breadcrumbs">
+            <ol>
+              <li><a href="home.html">Home</a></li>
+              <li class="current">Crime List </li>
+            </ol>
+          </nav>
+        </div>
+      </div><!-- End Page Title -->
+
+            <div class="container my-5">
+              <div class="card border-primary">
+                <div class="card-header bg-primary  d-flex  justify-content-between  ">
+                  <h3 class="text-white fw-bold fs-4">Crime List</h3>
+                     
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered table-hover align-middle mb-0">
+                    <thead class="table-primary text-center">
+                      <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Reporting User</th>
+                        <th scope="col">Officer Name </th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action </th>
+                      </tr>
+                    </thead>
+                    <tbody class="text-center">
+                     {% for crime in crimes %}
+                      <tr>
+                        <td>{{ crime.reporting_date}}</td>
+                        <td>{{ crime.category }}</td>
+                        <td>{{ crime.title }}</td>
+                        <td>{{ crime.reporting_user }}</td>
+                        <td> {% if crime.police_officer %}{{ crime.police_officer }} {% else %} Will be assign soon {% endif %}</td>
+                        <td class="{% if crime.status == 'Pending'%} text-warning {%elif crime.status == 'Approved'%} text-success {%else%} text-danger {% endif %}  fw-bold">{{ crime.status }}</td>
+                        <td class="justify-content-evenly">
+                          <a href="{% url 'crime-details' crime.uuid %}" class="text-primary "><i class="fas fa-eye"></i></a>
+                          {% if user.is_authenticated %}
+                          <a href="{% url 'crime-update' crime.uuid %}" class="text-warning ms-2 me-3"><i class="fas fa-pen"></i></a>
+                          <a href="{% url 'crime-delete' crime.uuid %}" class="text-danger "><i class="fas fa-trash"></i></a>
+                          {% endif %}
+                        </td>
+                       </tr>
+                      {% endfor %}
+                      <!-- <tr>
+                        <td>Advanced Graphic Design</td>
+                        <td>Design</td>
+                        <td>Advanced</td>
+                        <td>$399</td>
+                        <td class="text-success fw-bold">$249</td>
+                      </tr>
+                      <tr>
+                        <td>Data Science Essentials</td>
+                        <td>Data</td>
+                        <td>Intermediate</td>
+                        <td>$599</td>
+                        <td class="text-success fw-bold">$399</td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+    
+          </main>
+    {% endblock %}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block section %}
+<main class="main">
+
+  <!-- Page Title -->
+  <div class="page-title accent-background">
+    <div class="container d-lg-flex justify-content-between align-items-center">
+      <h1 class="mb-2 mb-lg-0">Report Crime</h1>
+      <nav class="breadcrumbs">
+        <ol>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li class="current">Report Crime </li>
+        </ol>
+      </nav>
+    </div>
+  </div><!-- End Page Title -->
+
+<div class="container my-5">
+    <div class="card border-primary">
+      <div class="card-header bg-primary text-white text-center fw-bold fs-4">
+        Report New Crime
+      </div>
+      <div class="card-body">
+        <form method="post">
+          {% csrf_token %}
+        <div class="row mb-3 ">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Reporting Person </label>
+            <!-- <input type="text" class="form-control" id="reporting_user" name="reporting_user" placeholder="Enter  your name "> -->
+                  {{ form.reporting_user }}
+
+                  {% if form.reporting_user.errors %}
+                    <p class="text-danger">{{ form.reporting_user.errors | join:" " }}</p>
+                 {% endif %}
+            </div>
+            <div class="col-md-6">
+
+                <label for="date" class="form-label">Date</label>
+                <!-- <input class="form-control" name="reporting_date" type="date" id="date"> -->
+                 {{ form.reporting_date }}
+                 {% if form.reporting_date.errors %}
+                    <p class="text-danger">{{ form.reporting_date.errors | join:" " }}</p>
+                 {% endif %}
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Title </label>
+      <!-- <input type="text" class="form-control" id="title" name="title" placeholder="Enter crime details "> -->
+          {{ form.title }}
+          {% if form.title.errors %}
+                    <p class="text-danger">{{ form.title.errors | join:" " }}</p>
+                 {% endif %}
+      </div>
+  
+          
+  
+          <div class="mb-3">
+            <label for="courseCategory" class="form-label">Category</label>
+            <!-- <select class="form-select" name="category" id="courseCategory">
+              <option selected disabled>Select category</option>
+              <option value="Crimes Against Persons">Crimes Against Persons</option>
+              <option value="Crimes Against Property">Crimes Against Property</option>
+              <option value="White Collar Crimes">White-Collar Crimes</option>
+              <option value="Crimes Against Society">Crimes Against Society</option>
+              
+              <option value="cybercrimes">Cybercrimes</option>
+
+            </select> -->
+
+            {{ form.category }}
+            {% if form.category.errors %}
+                    <p class="text-danger">{{ form.category.errors | join:" " }}</p>
+                 {% endif %}
+          </div>
+  
+          <div class="mb-3">
+            <label for="courseLevel" class="form-label">Status</label>
+            <!-- <select class="form-select" name="status" id="courseLevel">
+              <option selected disabled>Select level</option>
+              <option value="Approved">Approved</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Pending">Pending</option>
+            </select> -->
+
+            {{ form.status }}
+            {% if form.status.errors %}
+                    <p class="text-danger">{{ form.status.errors | join:" " }}</p>
+                 {% endif %}
+          </div>
+  
+          
+  
+          
+      
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-4">Report Crime</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  </main>
+{% endblock %}

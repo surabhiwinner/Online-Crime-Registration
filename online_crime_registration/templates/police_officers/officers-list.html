@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{% block section %}
+
+<!-- Page Title -->
+        <div class="page-title accent-background">
+          <div class="container d-lg-flex justify-content-between align-items-center">
+            <h1 class="mb-2 mb-lg-0">Police Officers </h1>
+            <nav class="breadcrumbs">
+              <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li class="current">Police officers</li>
+              </ol>
+            </nav>
+          </div>
+        </div><!-- End Page Title -->
+
+
+    <section id="blog-posts" class="blog-posts section">
+        
+        <div class="d-flex">
+        
+
+        <div class="container ms-lg-6 col-7">
+          <div class="row gy-lg-4">
+            
+            {% for officer in officers %}
+            <div class="container ms-lg-5 mt-lg-5">
+              <article>
+  
+                <div class="post-category ">
+                  <!-- <img src="/static/assets/img/blog/blog-1.jpg" alt="" class="img-fluid"> -->
+                   
+                   <a href="blog-details.html" class="  text-primary fw-bold fs-3"> {{officer.police_officer }} </a>
+                   <p class="post-category  card-body fs-6">  
+                  
+                     <img src="{{ officer.image.url }}" style="width: 130px; height: 150px;" alt="">
+    
+                     
+                    </p> 
+    
+                </div>
+  
+              </article>
+            </div><!-- End post list item -->
+  
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if user.is_authenticated and user.role == 'Admin' %}
+        
+        <div class="align-items-end col-3 container" >
+                <!-- <button class="btn btn-success border-3"> Add New Officers</button> -->
+                 <a href="{% url 'add-new-officer' %}" type="submit" class="btn btn-success border border-3 rounded-3"> Add New Officers</a>
+            </div>
+       
+        {% endif %}
+      </div>
+  
+      </section><!-- /Blog Posts Section -->
+
+{% endblock %}
