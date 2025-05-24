@@ -2,82 +2,104 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Online Crime Registration </title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+    <meta charset="utf-8">
+    <title>Plumberz - Free Plumbing Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-  <!-- font awsome cdn  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link href="/static/img/favicon.ico" rel="icon">
 
-  <!-- Favicons -->
-  <link href="/static/assets/img/favicon.png" rel="icon">
-  <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-  <!-- Main CSS File -->
-  <link href="/static/assets/css/main.css" rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Company
-  * Template URL: https://bootstrapmade.com/company-free-html-bootstrap-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- Template Stylesheet -->
+    <link href="/static/css/style.css" rel="stylesheet">
 </head>
 
-<body class="index-page">
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light d-none d-lg-block">
+        <div class="row align-items-center top-bar">
+            <div class="col-lg-3 col-md-12 text-center text-lg-start">
+                <a href="" class="navbar-brand m-0 p-0">
+                    <h1 class="text-primary m-0">Online Crime Registration</h1>
+                </a>
+            </div>
+            <div class="col-lg-9 col-md-12 text-end">
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <i class="fa fa-map-marker-alt text-primary me-2"></i>
+                    <p class="m-0">123 Street, New York, USA</p>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center me-4">
+                    <i class="far fa-envelope-open text-primary me-2"></i>
+                    <p class="m-0">info@example.com</p>
+                </div>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-0" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container position-relative d-flex align-items-center" >
+
+      <!-- <a href="index.html" class="logo d-flex align-items-center me-auto">
+         Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename" style="color: rgb(14, 175, 49);"> Online Crime Registration </h1><span>.</span>
-      </a>
+        <!-- <h1 class="sitename" style="color: rgb(255, 255, 255);"> Online Crime Registration </h1><span>.</span> -->
+      <!-- </a>  -->
+      <div class="container-fluid nav-bar bg-light">
+      
+        <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
+            <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+                <h1 class="text-primary m-0">Online Crime Register </h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav me-auto">
 
-      <nav id="navmenu" class="navmenu ">
-        <ul>
           {% if page == 'home-page' %}
-          <li><a href="{% url 'home' %}" class="active">Home</a></li>
+          <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a></li>
           {% else %}
-          <li><a href="{% url 'home' %}" >Home</a></li>
+        <a href="{% url 'home' %}" class="nav-item nav-link ">Home</a>
           {% endif %}
 
           {% if page == 'about-page' %}
-          <li class="dropdown"><a class="active" href="{% url 'about' %}"><span>About</span> 
+          <a class="nav-item nav-link active" href="{% url 'about' %}"><span>About</span> 
             <!-- <i class="bi bi-chevron-down toggle-dropdown"></i> -->
           </a>
-            <!-- <ul>
-              <li><a href="team.html">Team</a></li>
-              <li><a href="testimonials.html">Testimonials</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-            </ul> -->
-          </li>
+            
+          
           {% else %}
-          <li class="dropdown"><a  href="{% url 'about' %}"><span>About</span> 
+          <a class="nav-item nav-link" href="{% url 'about' %} "><span>About</span> 
             <!-- <i class="bi bi-chevron-down toggle-dropdown"></i> -->
           </a>
             <!-- <ul>
@@ -93,36 +115,36 @@
                 </ul>
               </li>
             </ul> -->
-          </li>
+          
           {% endif %}
 
           {% if page == 'crimes-page' %}
-          <li><a class="avtive" href="{% url 'crimes' %}">Crimes</a></li>
+          <li><a class="nav-item nav-link avtive" href="{% url 'crimes' %}">Crimes</a></li>
           {% else %}
-          <li><a class="avtive" href="{% url 'crimes' %}">Crimes</a></li>
+          <li><a class="nav-item nav-link" href="{% url 'crimes' %}">Crimes</a></li>
           {% endif %}
 
           {% if not user.is_authenticated %}
 
           {% if page == 'login-page' %}
-          <li><a href="{% url 'login' %}">LogIn</a></li>
+          <li><a class="nav-item nav-link active" href="{% url 'login' %}">LogIn</a></li>
           {% else %}
-          <li><a href="{% url 'login' %}">LogIn</a></li>
+          <li><a class="nav-item nav-link" href="{% url 'login' %}">LogIn</a></li>
           {% endif %}
 
           {% endif %}
 
           {% if page == 'report-crime-page' %}
-          <li><a class="active" href="{% url 'report-crime' %}">Report Crime</a></li>
+          <li><a class="nav-item nav-link active" href="{% url 'report-crime' %}">Report Crime</a></li>
           {% else %}
-          <li><a href="{% url 'report-crime' %}">Report Crime</a></li>
+          <li><a class="nav-item nav-link" href="{% url 'report-crime' %}">Report Crime</a></li>
           {% endif %}
           <!-- <li><a href="blog.html">Blog</a></li> -->
            
           {% if page == 'officers-list-page' %}
-          <li><a class="active" href="{% url 'officers-list' %}">Officers</a></li>
+          <li><a class="nav-item nav-link active" href="{% url 'officers-list' %}">Officers</a></li>
           {% else %}
-          <li><a href="{% url 'officers-list' %}">Officers</a></li>
+          <li><a class="nav-item nav-link" href="{% url 'officers-list' %}">Officers</a></li>
           {% endif %}
 
   {% if user.is_authenticated %}
@@ -131,7 +153,7 @@
             <img src="" alt="Profile" style="width: 30px; height: 30px; border-radius:50%;">
             <p class="text-secondary ms-1 mb-0">{{ user }}</p>
         </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu fade-up m-0">
         <li><a href="{% url 'logout' %}" class="dropdown-item text-primary">Logout</a></li>
     </ul>
 </div>
@@ -140,7 +162,7 @@
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i> 
-      </nav>
+      </nav></div>
 
       <!-- <div class="header-social-links ms-3" style="color: darkgreen;"> | 
         <a href="#" class="twitter ms-1"><i class="bi bi-twitter-x"></i></a>
@@ -150,7 +172,13 @@
       </div> -->
 
     </div>
-  </header>
+    </div>
+    <!-- Topbar End -->
+<!-- 
+
+  <header id="header" class="header d-flex align-items-center sticky-top dark-background" style="color:rgb(41, 86, 88) "> -->
+    
+  <!-- </header> -->
 <!-- header end  -->
 
 {% block section %}
@@ -161,96 +189,82 @@
 
 <!-- footer start -->
 
-<footer id="footer" class="footer ">
-
-  <div class="container footer-top">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6 footer-about">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <span class="sitename">Company</span>
-        </a>
-        <div class="footer-contact pt-3">
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Address</h4>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Opening Hours</h4>
+                    <h6 class="text-light">Monday - Friday:</h6>
+                    <p class="mb-4">09.00 AM - 09.00 PM</p>
+                    <h6 class="text-light">Saturday - Sunday:</h6>
+                    <p class="mb-0">09.00 AM - 12.00 PM</p>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Services</h4>
+                    <a class="btn btn-link" href="">Drain Cleaning</a>
+                    <a class="btn btn-link" href="">Sewer Line</a>
+                    <a class="btn btn-link" href="">Water Heating</a>
+                    <a class="btn btn-link" href="">Toilet Cleaning</a>
+                    <a class="btn btn-link" href="">Broken Pipe</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-light mb-4">Newsletter</h4>
+                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="social-links d-flex mt-4">
-          <a href=""><i class="bi bi-twitter-x"></i></a>
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'about' %}">About us</a></li>
-          <li><a href="{% url 'crimes' %}">Crimes</a></li>
-          <li><a href="{% url 'login' %}">LogIn</a></li>
-          <li><a href="{% url 'report-crime' %}">Report Crime</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h4>Our Services</h4>
-        <ul>
-          <li><a href="#">Web Design</a></li>
-          <li><a href="#">Web Development</a></li>
-          <li><a href="#">Product Management</a></li>
-          <li><a href="#">Marketing</a></li>
-          <li><a href="#">Graphic Design</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-4 col-md-12 footer-newsletter">
-        <h4>Our Newsletter</h4>
-        <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-        <form action="forms/newsletter.php" method="post" class="php-email-form">
-          <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-        </form>
-      </div>
-
     </div>
-  </div>
+    <!-- Footer End -->
 
-  <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">Company</strong> <span>All Rights Reserved</span></p>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you've purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a href=“https://themewagon.com>ThemeWagon
-    </div>
-  </div>
 
-</footer>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-<!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-<!-- Preloader -->
-<div id="preloader"></div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/lib/wow/wow.min.js"></script>
+    <script src="/static/lib/easing/easing.min.js"></script>
+    <script src="/static/lib/waypoints/waypoints.min.js"></script>
+    <script src="/static/lib/counterup/counterup.min.js"></script>
+    <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-<!-- Vendor JS Files -->
-<script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/static/assets/vendor/php-email-form/validate.js"></script>
-<script src="/static/assets/vendor/aos/aos.js"></script>
-<script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="/static/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
-<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-<!-- Main JS File -->
-<script src="/static/assets/js/main.js"></script>
-
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
 </body>
 
 </html>
