@@ -14,6 +14,8 @@ from django.utils.decorators import method_decorator
 
 from authentication.permissions import permission_role
 
+from authentication.models import Profile
+
 
 # Create your views here.
 
@@ -23,14 +25,22 @@ class CrimesListView(View):
     def get(self, request , *args , **kwargs):
 
 
-        
+        # uuid = kwargs.get('uuid')
+        # officer = Officers.objects.get(uuid)
         crimes = Crimes.objects.all()
 
         print(crimes)
 
+        profile = Profile.objects.all()
+        # profile = officer.police_officer
+
+        # is_owner = request.user
+
         data = {
             'crimes' : crimes,
-            'page'   : 'crime-list'
+            'page'   : 'crime-list',
+            'profile'   : profile,
+            
         }
 
         return render(request,'crimes/crime-list.html', context=data)
@@ -128,7 +138,9 @@ class CrimeUpdateView(View):
 
         print(crime)
 
-        form = CrimesReportForm(request.POST , instance= crime)
+        # form = CrimesReportForm(request.POST , instance= crime)
+
+        form = CrimeUpdateForm(request.POST, instance= crime)
 
         if form.is_valid():
 

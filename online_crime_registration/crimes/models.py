@@ -53,8 +53,7 @@ class Crimes(BaseClass):
 
     status = models.CharField(max_length=50,choices = StatusChoice.choices)
 
-    police_officer = models.ForeignKey('police_officers.Officers', on_delete=models.SET_DEFAULT,
-                                       default=1)
+    police_officer = models.ForeignKey('police_officers.Officers', on_delete=models.SET_NULL, null=True,blank=True)
 
 
     def __str__(self):

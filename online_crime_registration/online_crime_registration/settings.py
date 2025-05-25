@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crimes',
     'police_officers',
-    'authentication'
+    'authentication',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins'  :   ['authentication.templatetags.check_roles']
         },
     },
 ]

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!-- {% load check_roles %} -->
 
 <head>
     <meta charset="utf-8">
-    <title>Plumberz - Free Plumbing Website Template</title>
+    <title>Online crime registration platform </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -125,19 +126,24 @@
           {% endif %}
 
           {% if not user.is_authenticated %}
-
           {% if page == 'login-page' %}
           <li><a class="nav-item nav-link active" href="{% url 'login' %}">LogIn</a></li>
           {% else %}
           <li><a class="nav-item nav-link" href="{% url 'login' %}">LogIn</a></li>
           {% endif %}
-
           {% endif %}
+
+          
+
+          {% user_role_checking request 'Officer,Admin' as allow %}
+          {% if allow %}
 
           {% if page == 'report-crime-page' %}
           <li><a class="nav-item nav-link active" href="{% url 'report-crime' %}">Report Crime</a></li>
           {% else %}
           <li><a class="nav-item nav-link" href="{% url 'report-crime' %}">Report Crime</a></li>
+          {% endif %}
+
           {% endif %}
           <!-- <li><a href="blog.html">Blog</a></li> -->
            
@@ -147,16 +153,19 @@
           <li><a class="nav-item nav-link" href="{% url 'officers-list' %}">Officers</a></li>
           {% endif %}
 
-  {% if user.is_authenticated %}
-    <div class="nav-item dropdown">
-        <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+
+          {% user_role_checking request 'Officer,Admin' as allow %}
+          {% if allow %}
+  
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" role="button" aria-expanded="false">
             <img src="" alt="Profile" style="width: 30px; height: 30px; border-radius:50%;">
             <p class="text-secondary ms-1 mb-0">{{ user }}</p>
-        </a>
-    <ul class="dropdown-menu fade-up m-0">
-        <li><a href="{% url 'logout' %}" class="dropdown-item text-primary">Logout</a></li>
-    </ul>
-</div>
+            </a>
+            <ul class="dropdown-menu fade-up m-0">
+            <li><a href="{% url 'logout' %}" class="dropdown-item text-primary">Logout</a></li>
+            </ul>
+          </div>
 {% endif %}
 
 

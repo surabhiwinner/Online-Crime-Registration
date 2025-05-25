@@ -36,10 +36,16 @@
                         <td class="{% if crime.status == 'Pending'%} text-warning {%elif crime.status == 'Approved'%} text-success {%else%} text-danger {% endif %}  fw-bold">{{ crime.status }}</td>
                         <td class="justify-content-evenly">
                           <a href="{% url 'crime-details' crime.uuid %}" class="text-primary "><i class="fas fa-eye"></i></a>
-                          {% if user.is_authenticated %}
-                          <a href="{% url 'crime-update' crime.uuid %}" class="text-warning ms-2 me-3"><i class="fas fa-pen"></i></a>
-                          <a href="{% url 'crime-delete' crime.uuid %}" class="text-danger "><i class="fas fa-trash"></i></a>
+
+
+                          {% user_role_checking request 'Admin' as allow %}
+                          <!-- {% if profile == is_owner %} -->
+   
+                          {% if allow %}
+                              <a href="{% url 'crime-update' crime.uuid %}" class="text-warning ms-2 me-3"><i class="fas fa-pen"></i></a>
+                              <a href="{% url 'crime-delete' crime.uuid %}" class="text-danger "><i class="fas fa-trash"></i></a>
                           {% endif %}
+                          <!-- {% endif %} -->
                         </td>
                        </tr>
                       {% endfor %}

@@ -9,6 +9,8 @@ class RoleChoices(models.TextChoices):
 
     OFFICER = 'Officer','Officer'
 
+    USER = 'User', 'User'
+
 class Profile(AbstractUser):
 
     image = models.ImageField(upload_to='profile-images/')

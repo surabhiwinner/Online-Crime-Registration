@@ -2,7 +2,7 @@ from django import template
 
 register = template.Library()
 
-
+@register.simple_tag
 def user_role_checking(request,roles):
 
     roles = roles.split(',')
