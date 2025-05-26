@@ -26,7 +26,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('crimes/',include('crimes.urls')),
     path('officers/',include('police_officers.urls')),
-    path('authentication', include('authentication.urls'))
+    path('authentication', include('authentication.urls')),
+    path('user/', include('user.urls')),
 ]
 
 

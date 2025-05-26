@@ -72,7 +72,7 @@ class ContactView(View):
         return render(request , 'crimes/contact.html',context=data) 
       
 
-@method_decorator(permission_role(roles=['Admin', 'Officer']),name='dispatch')
+@method_decorator(permission_role(roles=['Officer','User','Admin']),name='dispatch')
 class ReportCrimeView(View):
 
 
@@ -110,7 +110,7 @@ class ReportCrimeView(View):
 
             return render(request,'crimes/report_crime.html', context=data)
 
-@method_decorator(permission_role(roles=['Admin', 'Officer']),name='dispatch')
+@method_decorator(permission_role(roles=['Admin','Officer']),name='dispatch')
 class CrimeUpdateView(View):
 
     def get(self, request, *args , **kwargs):

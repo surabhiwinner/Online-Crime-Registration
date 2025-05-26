@@ -2,12 +2,52 @@
 
 
     {% block section %}
-    <main class="main">
+   <main class="main">
 
-      
-    <div>
-        <h1>THis is the <span class="text-danger">HOME PAGE</span></h1>
 
-    </div>
-    </main>
+    <div class="container py-5 my-5">
+        <div class=" row justify-content-center d-flex row justify-content-between">
+          <div  {% if not  user.is_authenticated %}class="col-md-9" {% endif %}>
+            <div class="card shadow-lg">
+              <!-- <img src="{{ course.image.url}}" class="card-img-top" style="width: auto; height: 350px ; object-fit: fill;" alt="Complete Python Bootcamp"> -->
+                
+              <div class="card-body">
+
+               <h1 class="title"> 🏠 Welcome to Crime Online Registration Portal</h1>
+               <p>
+This platform is designed to streamline the process of reporting crimes by providing a secure, 
+user-friendly, and accessible online system for the public. Citizens can register complaints, 
+track the status of their reports, and communicate with law enforcement agencies from the comfort of their homes. <br>
+
+Key  <br>
+
+🔐 Secure complaint registration <br>
+
+📄 Easy-to-use forms for detailed reporting <br>
+
+📊 Real-time status updates <br>
+
+📁 Digital record-keeping for future reference <br>
+
+Your safety is our priority. Together, let's make our society safer and more accountable — one report at a time. </p>
+              
+              </div>
+              
+            </div>
+                      
+          </div>
+          {% if not user.is_authenticated %}
+          <div class="col-md-3">
+            <div class="container">
+                <div class="col-3"> <a href="{% url 'user-registration' %}" class="btn border border-3 border-success shadow btn-success" style=" width: 100px;">   Register </a> 
+               </div>
+               
+               <div class="col-3"> <a href="{% url 'login' %}" class="btn btn-warning border border-3 border-warning shadow mt-4 " style=" width: 100px;"> Login </a></div>
+            </div>
+          </div>
+          {% endif%}
+        </div>
+      </div>
+    
+</main>
     {% endblock %}

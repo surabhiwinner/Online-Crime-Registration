@@ -125,17 +125,11 @@
           <li><a class="nav-item nav-link" href="{% url 'crimes' %}">Crimes</a></li>
           {% endif %}
 
-          {% if not user.is_authenticated %}
-          {% if page == 'login-page' %}
-          <li><a class="nav-item nav-link active" href="{% url 'login' %}">LogIn</a></li>
-          {% else %}
-          <li><a class="nav-item nav-link" href="{% url 'login' %}">LogIn</a></li>
-          {% endif %}
-          {% endif %}
+          
 
           
 
-          {% user_role_checking request 'Officer,Admin' as allow %}
+          {% user_role_checking request 'Officer,User,Admin' as allow %}
           {% if allow %}
 
           {% if page == 'report-crime-page' %}
@@ -152,9 +146,24 @@
           {% else %}
           <li><a class="nav-item nav-link" href="{% url 'officers-list' %}">Officers</a></li>
           {% endif %}
+          
+
+          {% if not user.is_authenticated %}
+          {% if page == 'login-page' %}
+          <li><a class="nav-item nav-link active" href="{% url 'login' %}">LogIn</a></li>
+          {% else %}
+          <li><a class="nav-item nav-link" href="{% url 'login' %}">LogIn</a></li>
+          {% endif %}
+          {% endif %}
+
+          {% if page == 'user-reg-page' %}
+          <li><a class="nav-item nav-link active" href="{% url 'user-registration' %}">User Registration</a></li>
+           {% else %}
+          <li><a class="nav-item nav-link" href="{% url 'user-registration' %}">User Registration</a></li>
+          {% endif %}
 
 
-          {% user_role_checking request 'Officer,Admin' as allow %}
+          {% user_role_checking request 'Officer,Admin,User' as allow %}
           {% if allow %}
   
           <div class="nav-item dropdown">

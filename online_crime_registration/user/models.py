@@ -12,7 +12,10 @@ class User(BaseClass):
 
     image = models.ImageField(upload_to='user-images/')
 
-    email = models.EmailField()
+    email = models.EmailField(max_length=100)
+
+    # phone_number = models.IntegerField()
+
 
     def __str__(self):
         return f'{self.name}'
