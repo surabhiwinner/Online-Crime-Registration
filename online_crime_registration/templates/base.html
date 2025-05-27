@@ -31,6 +31,10 @@
 
     <!-- Template Stylesheet -->
     <link href="/static/css/style.css" rel="stylesheet">
+
+<!-- font aswome cdn  -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -129,7 +133,7 @@
 
           
 
-          {% user_role_checking request 'Officer,User,Admin' as allow %}
+          {% user_role_checking request 'Officer,User' as allow %}
           {% if allow %}
 
           {% if page == 'report-crime-page' %}
@@ -147,7 +151,7 @@
           <li><a class="nav-item nav-link" href="{% url 'officers-list' %}">Officers</a></li>
           {% endif %}
           
-
+            {% if page != 'home-page' %}
           {% if not user.is_authenticated %}
           {% if page == 'login-page' %}
           <li><a class="nav-item nav-link active" href="{% url 'login' %}">LogIn</a></li>
@@ -155,12 +159,13 @@
           <li><a class="nav-item nav-link" href="{% url 'login' %}">LogIn</a></li>
           {% endif %}
           {% endif %}
+          {% endif %}
 
-          {% if page == 'user-reg-page' %}
-          <li><a class="nav-item nav-link active" href="{% url 'user-registration' %}">User Registration</a></li>
+          <!-- {% if page == 'user-reg-page' %}
+          <li><a class="nav-item nav-link active" href="{% url 'user-registration' %}"><i class="fa-solid fa-right-to-bracket"></i> Join Here </a></li>
            {% else %}
           <li><a class="nav-item nav-link" href="{% url 'user-registration' %}">User Registration</a></li>
-          {% endif %}
+          {% endif %} -->
 
 
           {% user_role_checking request 'Officer,Admin,User' as allow %}
@@ -176,13 +181,23 @@
             </ul>
           </div>
 {% endif %}
+           <!-- <li><a class="nav-item nav-link active" href="{% url 'user-registration' %}">User Registration</a></li> -->
+          
+
 
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i> 
-      </nav></div>
+      </nav>
+    </div>
+        {% if not user.is_authenticated %}
+      <div class="container col-2 bg-success text-center " style=" height: 60px; width: auto;" >
+        
+          <a class="nav-item nav-link text-white active fw-bolder fs-4" href="{% url 'user-registration' %}"><i class="fa-solid fa-right-to-bracket fs-4"></i> Register Here </a>
+      </div>
+      {% endif %}
 
-      <!-- <div class="header-social-links ms-3" style="color: darkgreen;"> | 
+      <!-- <div class="header-social-links ms-3" style="color: darkgreen;"> 
         <a href="#" class="twitter ms-1"><i class="bi bi-twitter-x"></i></a>
         <a href="#" class="facebook ms-1"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram ms-1"><i class="bi bi-instagram"></i></a>

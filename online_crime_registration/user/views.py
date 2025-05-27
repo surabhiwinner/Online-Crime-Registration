@@ -3,8 +3,13 @@ from django.shortcuts import render, redirect
 
 from django.views import View
 
+from django.db import transaction
+
+from online_crime_registration.utility import send_email
 
 from django.contrib.auth.hashers import make_password
+
+
 # Create your views here.
 
 from .forms import ProfileForm, UserForm
@@ -38,32 +43,45 @@ class UserRegistrationView(View):
 
         if profile_form.is_valid():
 
-            profile = profile_form.save(commit=False)
+            with transaction.atomic():
 
-            email = profile_form.cleaned_data.get('email')
+                profile = profile_form.save(commit=False)
 
-            password = profile_form.cleaned_data.get('password')
+                email = profile_form.cleaned_data.get('email')
 
-            profile.username = email
+                password = profile_form.cleaned_data.get('password')
 
-            profile.role = 'User'
+                profile.username = email
 
-            profile.password = make_password(password)
+                profile.role = 'User'
 
-            profile.save()
+                profile.password = make_password(password)
 
-            if user_form.is_valid():
+                profile.save()
 
-                user = user_form.save(commit=False)
+                if user_form.is_valid():
 
-                user.profile = profile
 
-                user.name =f' {profile.first_name} {profile.last_name}'
+                    user = user_form.save(commit=False)
 
-                user.save()
+                    user.profile = profile
 
-                return redirect('login')
-            
+                    user.name =f' {profile.first_name} {profile.last_name}'
+
+                    user.save()
+
+                    subject = 'Successfully Registered !'
+
+                    recepient = user.profile.email
+
+                    template = 'email/success-registration.html'
+
+                    context = {'name': user.name, 'username':user.profile.email, 'password':password }
+
+                    send_email(subject,recepient,template,context)
+
+                    return redirect('login')
+                
             data = {
                     'profile_form'  : profile_form,
                     'user_form' : user_form,
