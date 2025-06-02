@@ -122,11 +122,14 @@
             </ul> -->
           
           {% endif %}
+          
+          {% if request.user.is_authenticated%}
 
           {% if page == 'crimes-page' %}
           <li><a class="nav-item nav-link avtive" href="{% url 'crimes' %}">Crimes</a></li>
           {% else %}
           <li><a class="nav-item nav-link" href="{% url 'crimes' %}">Crimes</a></li>
+          {% endif %}
           {% endif %}
 
           

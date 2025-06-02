@@ -9,6 +9,7 @@ from online_crime_registration.utility import send_email
 
 from django.contrib.auth.hashers import make_password
 
+import threading
 
 # Create your views here.
 
@@ -78,7 +79,9 @@ class UserRegistrationView(View):
 
                     context = {'name': user.name, 'username':user.profile.email, 'password':password }
 
-                    send_email(subject,recepient,template,context)
+                    thread = threading.Thread(target=send_email,args=(subject,recepient,template,context))
+
+                    thread.start()
 
                     return redirect('login')
                 

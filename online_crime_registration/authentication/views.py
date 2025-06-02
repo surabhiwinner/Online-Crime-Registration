@@ -60,6 +60,6 @@ class LogoutView(View):
 
         logout(request)
 
-        return redirect('crimes')
+        return redirect('home')
  
 

@@ -6,5 +6,5 @@ from .models import Officers
 
 urlpatterns = [
     path('officers-list/', views.OfficerListView.as_view(), name= 'officers-list'),
-    path('add-new-officer/',views.AddNewPoliceOfficersView.as_view(), name ='add-new-officer')
+    path('add-new-officer/',views.OfficerRegistrationView.as_view(), name ='add-new-officer')
 ]

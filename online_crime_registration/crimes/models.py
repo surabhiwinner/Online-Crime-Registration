@@ -3,27 +3,30 @@ from django.db import models
 
 import uuid
 
+
+
+
 # Create your models here.
 class StatusChoice(models.TextChoices):
 
-    pending = 'Pending','Pending'
+    PENDING = 'Pending','Pending'
 
-    approved = 'Approved', 'Approved'
+    APPROVED = 'Approved', 'Approved'
 
-    rejected = 'Rejected', 'Rejected'
+    REJECTED = 'Rejected', 'Rejected'
 
 
 class CategoryChoice(models.TextChoices):
 
-    crimes_against_persons =  'Crimes Against Persons', ' Crimes Against Persons'
+    CRIMES_AGAINST_PERSONS =  'Crimes Against Persons', ' Crimes Against Persons'
 
-    crimes_against_property = 'Crimes Against Property', 'Crimes Against Property'
+    CRIMES_AGAINST_PROPERTY = 'Crimes Against Property', 'Crimes Against Property'
 
-    white_collar_crimes  = ' White-Collar Crimes', ' White-Collar Crimes'
+    WHITE_COLLAR_CRIMES  = ' White-Collar Crimes', ' White-Collar Crimes'
      
-    crimes_against_society = ' Crimes Against Society',' Crimes Against Society'
+    CRIMES_AGAINST_SOCIETY = ' Crimes Against Society',' Crimes Against Society'
      
-    cybercrimes = ' Cybercrimes', ' Cybercrimes'
+    CYBERCRIMES = ' Cybercrimes', ' Cybercrimes'
 
 
 class BaseClass(models.Model):
@@ -43,7 +46,7 @@ class BaseClass(models.Model):
 
 class Crimes(BaseClass):
 
-    reporting_user = models.CharField(max_length=50)
+    reporting_user = models.ForeignKey('user.User',on_delete=models.CASCADE)
 
     title = models.CharField(max_length=100)
     
@@ -51,13 +54,13 @@ class Crimes(BaseClass):
 
     category = models.CharField(max_length=25,choices=CategoryChoice.choices)
 
-    status = models.CharField(max_length=50,choices = StatusChoice.choices)
+    status = models.CharField(max_length=50,choices = StatusChoice.choices,default=StatusChoice.PENDING)
 
     police_officer = models.ForeignKey('police_officers.Officers', on_delete=models.SET_NULL, null=True,blank=True)
 
 
     def __str__(self):
-        return f'{self.category}--{self.title}--{self.police_officer}'
+        return f'{self.category}--{self.title}--{self.police_officer or 'No officer assigned'}'
     
     class Meta :
 

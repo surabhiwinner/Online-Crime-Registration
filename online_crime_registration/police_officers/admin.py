@@ -5,3 +5,4 @@ from . import models
 
 
 admin.site.register(models.Officers)
+admin.site.register(models.RankOfOfficer)

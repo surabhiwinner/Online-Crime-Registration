@@ -6,6 +6,8 @@ from police_officers.models import Officers
 
 from django.views import View
 
+from django.db.models import Q
+
 from .forms import CrimesReportForm, CrimeUpdateForm
 
 from django.contrib.auth.decorators import login_required
@@ -16,9 +18,10 @@ from authentication.permissions import permission_role
 
 from authentication.models import Profile
 
+from user.models import User
+
 
 # Create your views here.
-
 
 class CrimesListView(View):
 
@@ -29,17 +32,37 @@ class CrimesListView(View):
         # officer = Officers.objects.get(uuid)
         crimes = Crimes.objects.all()
 
-        print(crimes)
+        
 
-        profile = Profile.objects.all()
+        
+
+        # if request.user.role == 'Officer':
+        # if hasattr(request.user, 'role'):
+        role =getattr(request.user, 'role')
+
+        if  role == 'Officer':
+            crimes = Crimes.objects.filter(police_officer__profile = request.user)
+        elif  role =='User':  
+            user = User.objects.get(profile = request.user)
+            crimes = Crimes.objects.filter(reporting_user = user)
+        elif role == 'Admin':
+
+            crimes = Crimes.objects.all()
+
+        # for crime in crimes:
+        #     print(crime.reporting_user)
+     
+        print(request.user)
+
+        # profile = Profile.objects.all()
         # profile = officer.police_officer
 
         # is_owner = request.user
-
+        print(crimes)
         data = {
             'crimes' : crimes,
             'page'   : 'crime-list',
-            'profile'   : profile,
+           
             
         }
 
@@ -72,7 +95,7 @@ class ContactView(View):
         return render(request , 'crimes/contact.html',context=data) 
       
 
-@method_decorator(permission_role(roles=['Officer','User','Admin']),name='dispatch')
+@method_decorator(permission_role(roles=['Officer','User']),name='dispatch')
 class ReportCrimeView(View):
 
 
@@ -83,9 +106,11 @@ class ReportCrimeView(View):
         # }
 
         form = CrimesReportForm()
+        user = User.objects.get(profile = request.user)
 
         data ={
             'form' : form,
+            'user' : user,
             'page' : 'report-crime-page'
         }
 
@@ -95,10 +120,15 @@ class ReportCrimeView(View):
 
         if request.method == 'POST':
             form = CrimesReportForm(request.POST)
+            user = User.objects.get(profile = request.user)
             # print(form)
             print(form.errors)
 
             if form.is_valid():
+
+                crime = form.save(commit=False)
+
+                crime.reporting_user = user
 
                 form.save()
 
@@ -119,10 +149,19 @@ class CrimeUpdateView(View):
 
         crime = Crimes.objects.get(uuid=uuid)
 
-        officers = Officers.objects.all()
+        role = request.user.role
+
+        if role == 'Officer':
+            officers = Officers.objects.filter(profile = request.user)
+            
+        elif role == 'Admin':
+            officers =Officers.objects.all()
 
         form = CrimeUpdateForm(instance=crime)
 
+        form.fields['police_officer'].queryset = officers
+        print(officers)
+        print(form)
         data = {
             'form' : form,
             'officers': officers
@@ -163,7 +202,7 @@ class CrimeDeleteView(View):
 
             return redirect('crimes')
 
-@method_decorator(permission_role(roles=['Admin', 'Officer']),name='dispatch')
+@method_decorator(permission_role(roles=['Admin','Officer','User']),name='dispatch')
 class  CrimeDetailsView(View):
 
         def get(self, request, *args, **kwargs):

@@ -13,10 +13,9 @@ class RoleChoices(models.TextChoices):
 
 class Profile(AbstractUser):
 
-    
+
 
     role = models.CharField(max_length=20,choices=RoleChoices.choices)
-
 
     def __str__(self):
         return f'{self.first_name}-{self.last_name}-{self.role}'
