@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from crimes import views
 
 
 from django.conf import settings
@@ -28,6 +29,7 @@ urlpatterns = [
     path('officers/',include('police_officers.urls')),
     path('authentication', include('authentication.urls')),
     path('user/', include('user.urls')),
+    path('',views.HomeView.as_view(),name= 'home'),
 ]
 
 
